@@ -1,0 +1,13 @@
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.3);
+  color: #f8fafc;
+}
