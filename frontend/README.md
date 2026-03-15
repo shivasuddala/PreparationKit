@@ -2,7 +2,7 @@
 
 A comprehensive, advanced interview preparation web application built with React. Master Java, Spring Boot, CI/CD, and Database/SQL concepts from fresher to senior level.
 
-🔗 **Live Demo**: [https://shiva51.github.io/PreparationKit](https://shiva51.github.io/PreparationKit)
+🔗 **Live Demo**: [https://shivasuddala.github.io/PreparationKit](https://shivasuddala.github.io/PreparationKit)
 
 ## ✨ Features
 
