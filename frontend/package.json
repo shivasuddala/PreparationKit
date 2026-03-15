@@ -2,7 +2,7 @@
   "name": "interview-prep",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://shiva51.github.io/PreparationKit",
+  "homepage": "https://shivasuddala51.github.io/PreparationKit",
   "dependencies": {
     "html2pdf.js": "^0.14.0",
     "react": "^19.2.4",
