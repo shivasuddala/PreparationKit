@@ -1417,7 +1417,7 @@ Map<String, Integer> immutableMap = Map.of("x", 1, "y", 2);`,
         level: 'mid',
         shortDesc: 'HashMap uses array of Node buckets. Hash → bucket index. Collision → linked list (→ tree if >8 nodes). Load factor 0.75, initial capacity 16. O(1) average, O(log n) worst.',
         keyPoints: [
-          'Backed by array of \`Node<K,V>\` (bucket array)',
+          'Backed by array of `Node<K,V>` (bucket array)',
           'hashCode() → hash → bucket index (hash & (n-1))',
           'Collision handling: linked list → red-black tree (when bucket size > 8)',
           'Tree reverts to list when bucket size < 6 (treeify threshold)',
