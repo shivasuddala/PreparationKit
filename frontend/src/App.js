@@ -58,16 +58,20 @@ function renderConceptForPDF(concept, idx, mode) {
         <div class="code-box">${ex.code.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
         ${ex.explanation ? `<div style="font-size:11px;color:#6b7280;font-style:italic;margin-top:4px;">💡 ${ex.explanation}</div>` : ''}
       </div>`).join('');
+    const sourcesHTML = (concept.sources || []).map(source => `<li><a href="${source.url}" target="_blank" rel="noopener noreferrer">${source.title}</a></li>`).join('');
 
     content = `
       <div class="short-desc">${concept.shortDesc}</div>
       <div class="detailed-text">${detailedHTML}</div>
-      ${examplesHTML ? `<div class="section-label">Examples</div>${examplesHTML}` : ''}`;
+      ${examplesHTML ? `<div class="section-label">Examples</div>${examplesHTML}` : ''}
+      ${sourcesHTML ? `<div class="section-label">Sources & Further Reading</div><ul>${sourcesHTML}</ul>` : ''}`;
   } else {
+    const quickSourcesHTML = (concept.sources || []).map(source => `<li><a href="${source.url}" target="_blank" rel="noopener noreferrer">${source.title}</a></li>`).join('');
     content = `
       <div class="short-desc">${concept.shortDesc}</div>
       <div class="section-label">Key Points</div>
-      ${concept.keyPoints.map(kp => `<div class="key-point">${kp}</div>`).join('')}`;
+      ${concept.keyPoints.map(kp => `<div class="key-point">${kp}</div>`).join('')}
+      ${quickSourcesHTML ? `<div class="section-label">Sources & Further Reading</div><ul>${quickSourcesHTML}</ul>` : ''}`;
   }
 
   return `<div class="concept-block">
@@ -246,7 +250,7 @@ function App() {
   const stats = getStats();
 
   return (
-    <div className="app">
+    <div className={`app ${view === 'study' ? 'study-active' : ''}`}>
       {/* Header */}
       <header className="header">
         <div className="header-inner">
@@ -409,7 +413,7 @@ function App() {
 
       <footer className="footer">
         <p>📚 InterviewPrepKit — Your Complete Interview Preparation Companion</p>
-        <p className="footer-sub">Java • Spring Boot • CI/CD • Database & SQL</p>
+        <p className="footer-sub">Java • DSA • AI & LLMs • Spring Boot • CI/CD • Database & SQL</p>
       </footer>
     </div>
   );
@@ -431,7 +435,7 @@ function HomeView({ technologies, stats, onSelectTech }) {
     <div className="home-view">
       <div className="hero">
         <h1 className="hero-title">Interview <span className="gradient-text">Preparation Kit</span></h1>
-        <p className="hero-subtitle">Master Java, Spring Boot, CI/CD & SQL — from fundamentals to advanced concepts. Detailed explanations, code examples, and last-minute revision guides.</p>
+        <p className="hero-subtitle">Build interview skills across Java, Spring Boot, DevOps, databases, AI/LLMs, and a Java-first DSA roadmap — from core concepts through advanced design. Learn with clear explanations, worked examples, source links, and last-minute revision guides.</p>
         <div className="hero-stats">
           <div className="stat-item"><span className="stat-num">{stats.totalTechnologies}</span><span className="stat-label">Technologies</span></div>
           <div className="stat-item"><span className="stat-num">{stats.totalTopics}</span><span className="stat-label">Topics</span></div>
@@ -583,6 +587,12 @@ function DetailedTab({ topic, concepts, expandedExamples, toggleExample }) {
               })}
             </div>
           )}
+          {concept.sources && concept.sources.length > 0 && (
+            <div className="concept-sources">
+              <h4>📚 Sources &amp; Further Reading</h4>
+              <ul>{concept.sources.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.title}</a></li>)}</ul>
+            </div>
+          )}
         </div>
       ))}
     </div>
@@ -610,6 +620,9 @@ function QuickPrepTab({ topic, concepts, techName }) {
           <ul className="key-points">
             {concept.keyPoints.map((point, pIdx) => <li key={pIdx}>{point}</li>)}
           </ul>
+          {concept.sources && concept.sources.length > 0 && (
+            <div className="quick-sources"><strong>Further reading:</strong> {concept.sources.map((source, sourceIdx) => <React.Fragment key={source.url}>{sourceIdx > 0 && ' · '}<a href={source.url} target="_blank" rel="noreferrer">{source.title}</a></React.Fragment>)}</div>
+          )}
         </div>
       ))}
     </div>

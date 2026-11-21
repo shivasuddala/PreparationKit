@@ -2,6 +2,8 @@ import javaTopics from './java';
 import springbootTopics from './springboot';
 import cicdTopics from './cicd';
 import databaseTopics from './database';
+import { javaInterviewTopics, springInterviewTopics, cicdInterviewTopics, databaseInterviewTopics, aiInterviewTopics } from './interviewTopics';
+import { dsaTopics, aiAdvancedTopics, javaAdvancedTopics, javaModernTopics, springAdvancedTopics, devopsAdvancedTopics, databaseAdvancedTopics } from './masteryTopics';
 
 export const technologies = [
   {
@@ -11,7 +13,16 @@ export const technologies = [
     color: '#f89820',
     gradient: 'linear-gradient(135deg, #f89820 0%, #e76f00 100%)',
     description: 'Core Java from basics to advanced — OOP, Collections, Multithreading, Streams, Design Patterns & more',
-    topics: javaTopics
+    topics: [...javaTopics, ...javaInterviewTopics, ...javaAdvancedTopics, ...javaModernTopics]
+  },
+  {
+    id: 'dsa',
+    name: 'Data Structures & Algorithms',
+    icon: '🧠',
+    color: '#06b6d4',
+    gradient: 'linear-gradient(135deg, #06b6d4 0%, #0e7490 100%)',
+    description: 'A Java-first path from Big O and core patterns to graphs, dynamic programming, stateful coding & advanced algorithms',
+    topics: dsaTopics
   },
   {
     id: 'springboot',
@@ -20,7 +31,7 @@ export const technologies = [
     color: '#6db33f',
     gradient: 'linear-gradient(135deg, #6db33f 0%, #4a8c2a 100%)',
     description: 'Spring Framework, REST APIs, JPA, Security, Microservices, Kafka, Redis, Testing & more',
-    topics: springbootTopics
+    topics: [...springbootTopics, ...springInterviewTopics, ...springAdvancedTopics]
   },
   {
     id: 'cicd',
@@ -29,7 +40,7 @@ export const technologies = [
     color: '#2196f3',
     gradient: 'linear-gradient(135deg, #2196f3 0%, #1565c0 100%)',
     description: 'Git, GitHub, Jenkins, Docker, Kubernetes, Scaling, Deployment Strategies & more',
-    topics: cicdTopics
+    topics: [...cicdTopics, ...cicdInterviewTopics, ...devopsAdvancedTopics]
   },
   {
     id: 'database',
@@ -38,7 +49,16 @@ export const technologies = [
     color: '#ff6f00',
     gradient: 'linear-gradient(135deg, #ff6f00 0%, #e65100 100%)',
     description: 'SQL Fundamentals, JOINs, Window Functions, Indexes, Performance, Normalization & more',
-    topics: databaseTopics
+    topics: [...databaseTopics, ...databaseInterviewTopics, ...databaseAdvancedTopics]
+  },
+  {
+    id: 'ai',
+    name: 'AI & LLM Engineering',
+    icon: '🤖',
+    color: '#8b5cf6',
+    gradient: 'linear-gradient(135deg, #8b5cf6 0%, #5b21b6 100%)',
+    description: 'LLM fundamentals, embeddings, RAG, tool calling, agents, evaluation, safety & production trade-offs',
+    topics: [...aiInterviewTopics, ...aiAdvancedTopics]
   }
 ];
 
